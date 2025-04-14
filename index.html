@@ -1,11 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>YouTube Downloader</title>
+    <meta charset="UTF-8">
+    <title>YouTube Video Downloader</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+            text-align: center;
+            padding-top: 50px;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            margin-top: 20px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 350px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-left: 10px;
+        }
+        .message {
+            margin-top: 30px;
+        }
+    </style>
 </head>
 <body>
-  <h1>Welcome to Fair Use YouTube Downloader</h1>
-  <p>This tool lets you download and modify YouTube videos for educational purposes.</p>
+    <h1>🎬 YouTube Video Downloader</h1>
+    <form method="POST">
+        <input type="text" name="url" placeholder="Paste YouTube URL here..." required>
+        <button type="submit">Download</button>
+    </form>
+
+    {% if download_link %}
+        <div class="message">
+            <p>✅ Download Complete!</p>
+            <a href="{{ download_link }}" download>👉 Click here to download your video</a>
+        </div>
+    {% elif error %}
+        <div class="message">
+            <p style="color: red;">❌ {{ error }}</p>
+        </div>
+    {% endif %}
 </body>
 </html>
